@@ -31,34 +31,28 @@
         <div class="row">
             <div class="col-md-6">
 
-                <div class="head-love">
+           <h1> Categories List </h1>
+           
+            <table class="table table-bordered table-primary table-striped">
+                <thead>
+                 <tr>
+                    <th>Category Name</th>
+                    
+                    <th>Category Details</th>
+                 </tr>
+                </thead>
+                <tbody>
+                 @foreach($categories as $cat)
+                 <tr>
+                    <td>{{$cat->name}}</td>
+                    <td>{{$cat->details}}</td>
 
+                 </tr>
+                 @endforeach
+                </tbody>
+            </table>
 
-                    <h1>Create Category</h1>
-                </div>
-
-
-                <div class="form-box">
-                    <form action="{{route('categories.store')}}" method="post">
-                     @csrf
-                        <div class="form-group">
-                            <label for="name">Category Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Category Name">
-                        </div><br>
-
-                        <div class="form-group">
-                            <label for="name">Category Details</label>
-                            <input type="text" class="form-control" id="details" name="details"
-                                placeholder="Category Details">
-                        </div><br>
-
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-success" value="submit">
-                        </div>
-
-                    </form>
-
-                </div>
+                
 
 
             </div>

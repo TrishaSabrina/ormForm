@@ -14,7 +14,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
-      
+    //   $data['categories']=Category::all();
+      //dd($data);
+
+    //   return view('back.category.index', $data); 
+
+    //evabeo likha jay
+    $categories=Category::all();
+    return view('back.category.index', compact('categories')); 
+
     }
 
     /**
@@ -36,7 +44,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        // $data['name'] = $request->name;
+        // $data['details'] = $request->details;  //evabeo likha jay abar arekvabeo likha jay
+        // Category::create($data);
+
+        Category::create([          //abar evabeo likha jay
+
+          'name'=> $request->name,
+          'details'=>$request->details, 
+
+        ]);
+        return redirect()->route('categories.index');
     }
 
     /**
