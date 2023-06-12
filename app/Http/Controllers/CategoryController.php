@@ -66,9 +66,18 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $data['category']= $category;
+        //option 1
+        //$data['category']= $category;
         // return view('back.category.show', $data);
 
+
+        //option 2
+        //$data['category']= $category;
+        // return view('back.category.show', 'category'=>$category);
+         
+
+        //option 3
+        $data['category']= $category;
         return view('back.category.show', compact('category')); 
 
 
@@ -82,7 +91,19 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        //option 1
+        //$data['category']= $category;
+        // return view('back.category.edit', $data);
+
+
+        //option 2
+        $data['category']= $category;
+        return view('back.category.edit', ['category'=>$category]);
+         
+
+        //option 3
+        // $data['category']= $category;
+        // return view('back.category.edit', compact('category')); 
     }
 
     /**
@@ -94,7 +115,25 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+
+        //option 1
+        // $data['name'] = $request->name;
+        // $data['details'] = $request->details;  //evabeo likha jay abar arekvabeo likha jay
+        // $category->update($data);
+
+        //option 2
+
+        // Category::where('id', $category->id)->update([          //abar evabeo likha jay
+
+        //     'name'=> $request->name,
+        //     'details'=>$request->details, 
+  
+        //   ]);
+
+        //option 3
+
+        $category->update($request->all());
+          return redirect()->route('categories.index');
     }
 
     /**
@@ -105,6 +144,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('categories.index');
+
     }
 }

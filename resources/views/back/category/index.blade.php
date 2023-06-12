@@ -26,7 +26,15 @@
                     <td>{{$cat->details}}</td>
                     <td>
                         <a class="btn btn-outline-danger" href="{{ route('categories.show', $cat->id)}}">Show</a>
+                        <a class="btn btn-outline-danger" href="{{ route('categories.edit', $cat->id)}}">Edit</a>
+                        <form class= "d-inline-block" action="{{route('categories.destroy', $cat->id)}}" method="post">
+                        @csrf
+                        @method('delete')
+
+                        <button class="btn btn-outline-danger" onclick="return confirm('Are you sure to delete?')">Delete</button>
+                    </form>
                     </td>
+                    
 
                  </tr>
                  @endforeach
